@@ -726,6 +726,23 @@ input,select,textarea{font-size:16px!important}
 @media(min-width:901px){.fabk{display:none!important}#prod .pp>div:first-child{position:sticky;top:100px;align-self:start}}
 #prod .fl a,#prod .dl a{margin:0 8px 8px 0}
 #klpg .pg{grid-template-columns:repeat(4,1fr)}@media(max-width:900px){#klpg .pg{grid-template-columns:1fr 1fr}}
+
+.scmp{margin:12px 0 4px;background:#fff;border:1px solid #DDD8CB}
+.scmp summary{cursor:pointer;padding:14px 18px;font:700 20px 'Barlow Condensed';text-transform:uppercase;letter-spacing:.03em;list-style:none;display:flex;justify-content:space-between;color:#141414}
+.scmp summary::-webkit-details-marker{display:none}.scmp summary::after{content:"+";color:var(--amber-d);font-size:26px;line-height:1}.scmp[open] summary::after{content:"–"}
+#serCmpBody{padding:0 18px 16px}
+.sct{display:grid;border-top:1px solid #DDD8CB;color:#141414}
+.sct .sch,.sct .scr{display:grid;grid-template-columns:1.1fr 2.4fr 1.5fr 1.3fr 1.3fr;gap:14px;padding:12px 6px;text-align:left;align-items:center}
+.sct .sch{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#777;border-bottom:1px solid #DDD8CB}
+.sct .scr{background:none;border:0;border-bottom:1px solid #eee;cursor:pointer;font-size:14.5px;color:#222}.sct .scr:hover{background:#faf6ea}
+.sct .scr>b{font:800 22px 'Barlow Condensed';text-transform:uppercase}
+.sct .scp small{display:block;color:#777}.sct .scp{font-weight:600}
+.sd{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:3px;border:1px solid rgba(0,0,0,.25);vertical-align:-2px}
+.scd{display:inline-flex;align-items:center;gap:2px;flex-wrap:wrap}.scd .sd:last-of-type{margin-right:6px}
+.ssel{display:grid;grid-template-columns:1.6fr 1fr;gap:30px;background:#fff;border:1px solid #DDD8CB;border-left:6px solid var(--amber);padding:22px 26px;margin:12px 0;color:#141414}
+.ssel h3{font-size:30px;margin-bottom:8px}.ssel p{margin:0;color:#444;line-height:1.55}
+.sfacts{display:grid;gap:10px;align-content:start}.sfacts small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#777}.sfacts b{font-size:15px}
+@media(max-width:900px){.ssel{grid-template-columns:1fr}.sct .sch{display:none}.sct .scr{grid-template-columns:1fr;gap:4px;padding:14px 4px}}
 </style>
 </head>
 <body>
@@ -800,6 +817,7 @@ input,select,textarea{font-size:16px!important}
     <div class="qbar"><div class="sbox"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Otsi seadet või koodi, nt Air Walker, R04" autocomplete="off"></div><button class="fbtn" data-fopen>Filtrid <span id="fN">0</span></button></div>
     <div class="pills" id="useChips" role="group" aria-label="Kasutus"></div>
     <div class="pills" id="serPills" role="group" aria-label="Seeria" style="margin-top:8px;flex-wrap:wrap;overflow:visible"></div>
+    <div id="serSel"></div><details class="scmp" id="serCmp"><summary>Mis vahe on seeriatel? Võrdle seeriaid</summary><div id="serCmpBody"></div></details>
     <div class="cl">
       <aside id="flt"><div class="fhd"><b>Filtrid</b><button class="fx" data-fclose aria-label="Sulge">×</button></div>
         <div class="fbody">
@@ -1433,6 +1451,30 @@ document.addEventListener('click',function(e){if(innerWidth>900&&!e.target.close
 }
 function facet(skip,fn){var m={};filtered(skip).forEach(function(d){fn(d).forEach(function(k){m[k]=(m[k]||0)+1})});return m}
 function groupCount(list){return groupsOf(list).length}
+var CATLW=0;if(window.ResizeObserver){var CATT=setInterval(function(){var g=document.getElementById('grid');if(g){clearInterval(CATT);new ResizeObserver(function(){var w=g.clientWidth;if(w&&w!==CATLW){CATLW=w;catDraw()}}).observe(g)}},300)}
+
+var SINFO={
+ 'START':['Mitmekülgne ja soodsaim valik. Sobib nii linnaruumi kui väiksematele aladele.','Haaveldatud, tsingitud, 2× pulbervärv','4 värvikomplekti'],
+ 'FIT':['Laiem valik üksikseadmeid, mida kombineeritakse pylon-postidega. Hinnad ei sisalda posti.','Haaveldatud, tsingitud, 2× pulbervärv','Kollane + hall'],
+ 'KOMPLEKT':['Valmis välijõusaali komplektid: mitu seadet ühes lahenduses.','Haaveldatud, tsingitud, 2× pulbervärv','4 värvikomplekti'],
+ 'STREET WORKOUT':['Keharaskusega treening: kangid, redelid, rööbaspuud, rõngad.','Haaveldatud, tsingitud, 2× pulbervärv','Kollane + hall'],
+ 'STREET WORKOUT KOMPLEKT':['Valmis ronimis- ja tänavatreeningu komplektid.','Haaveldatud, tsingitud, 2× pulbervärv','Kollane + hall'],
+ 'MULTI PARK':['Suured multifunktsionaalsed alad mitmele kasutajale korraga.','Liivapritsitud, kuumtsingitud, 2× pulbervärv','Vt toote leht'],
+ 'NINJA':['Modulaarsed takistusrajad jõu, koordinatsiooni ja tasakaalu arendamiseks.','Haaveldatud, tsingitud, 2× pulbervärv','4 värvikomplekti'],
+ 'LIGIPAASETAV':['Seadmed piiratud liikumisvõimega kasutajatele, sh ratastooliga.','Haaveldatud, tsingitud, 2× pulbervärv','Kollane + hall'],
+ 'STEEL4FIT':['Tootja kõige tugevamad ja vastupidavamad seadmed, mõeldud intensiivseks kasutuseks.','Kuumtsingitud, 2× pulbervärv','Punane + grafiit'],
+ 'STEEL4FIT D':['Kolme- ja neljajaamalised lahendused: ühele pylon-postile kuni 3–4 seadet.','Kuumtsingitud, 2× pulbervärv','Punane + grafiit'],
+ 'LINNAMOOBEL':['Pingid, jalgrattahoidjad ja prügikastid ala täiendamiseks.','Tsingitud või pulbervärvitud teras, puit','Vt toote leht']
+};
+var SCOL={'Kollane + hall':['#E9B800','#9a9a9a'],'Punane + grafiit':['#C8261E','#3a3f45'],'4 värvikomplekti':['#E9B800','#3a3f45','#E8711A','#5BB033']};
+function sDots(c){var a=SCOL[c];return a?a.map(function(x){return '<i class="sd" style="background:'+x+'"></i>'}).join(''):''}
+function sRange(k){var a=DATA.filter(function(d){return d.s===k&&d.p}).map(function(d){return d.p});if(!a.length)return null;return [Math.min.apply(null,a),Math.max.apply(null,a),a.length]}
+function serInfoDraw(){
+  var cm=$('serCmpBody');if(cm&&!cm.dataset.d){cm.dataset.d=1;cm.innerHTML='<div class="sct"><div class="sch"><b>Seeria</b><b>Kirjeldus</b><b>Pinnatöötlus</b><b>Värv</b><b>Hind (neto)</b></div>'+SER.filter(function(x){return x[0]!=='LINNAMOOBEL'}).map(function(x){var f=SINFO[x[0]]||['','',''],r=sRange(x[0]);return '<button type="button" class="scr" data-spill="'+x[0]+'"><b>'+esc(x[1])+'</b><span>'+esc(f[0])+'</span><span>'+esc(f[1])+'</span><span class="scd">'+sDots(f[2])+esc(f[2])+'</span><span class="scp">'+(r?'alates '+eur(r[0])+'<small> kuni '+eur(r[1])+'</small>':'')+'</span></button>'}).join('')+'</div><p class="mut" style="font-size:13px;margin:10px 0 0">Hinnad on tootegruppide näidishinnad (neto, ilma käibemaksu ja tarneta). Hinnavahe tuleb seadme tüübist, suurusest ja seeria pinnatöötlusest. Täpne pakkumine tehakse projekteerimisel.</p>'}
+  var sl=$('serSel');if(!sl)return;
+  if(cat.ser.length===1&&SERPG[cat.ser[0]]){var k=cat.ser[0],P=SERPG[k],f=SINFO[k]||['','',''],r=sRange(k),ix=SER.map(function(x){return x[0]}).indexOf(k);
+    sl.innerHTML='<div class="ssel"><div><h3>'+esc(SERN[k]||k)+'</h3><p>'+esc(P.l[0])+'</p></div><div class="sfacts"><div><small>Pinnatöötlus</small><b>'+esc(f[1])+'</b></div><div><small>Standardvärv</small><b class="scd">'+sDots(f[2])+esc((P.cs||'').replace(/^Standardvärv(id)?: /,'').split('.')[0])+'</b></div>'+(r?'<div><small>Hind (neto)</small><b>'+eur(r[0])+' – '+eur(r[1])+'</b></div>':'')+'<a class="btn sm d" href="#seeria-'+ix+'">Seeria täielik info →</a></div></div>'}
+  else sl.innerHTML=''}
 function catDraw(keepR){
   var cu=facet('use',function(d){return useTags(d)}),cs=facet('ser',function(d){return[d.s]}),ca=facet('area',function(d){return['s','m','l','xl'].filter(function(k){return inArea(d,k)})});
   var allN=filtered('use').length;
@@ -1455,7 +1497,9 @@ function catDraw(keepR){
   $('fN').textContent=act.length;$('fShow').textContent='Näita '+(cat.group?units.length+' tüüpi':f.length+' toodet');
   $('active').innerHTML=act.length?act.map(function(a){return '<button class="chip on" data-rmf="'+esc(a[0])+'">'+esc(a[1])+' ×</button>'}).join('')+'<button class="chip" data-clear style="border-style:dashed">Tühjenda kõik</button>':'';
   $('grid').innerHTML=units.length?units.slice(0,cat.lim).map(gcard).join(''):'<div style="grid-column:1/-1;padding:40px 0;text-align:center"><p class="mut">Sobivaid tooteid ei leitud.</p><button class="btn sm d" data-clear>Tühjenda filtrid</button></div>';
+  if(units.length>cat.lim&&cat.view==='grid'){var gr=$('grid'),cs=(getComputedStyle(gr).gridTemplateColumns||'').split(' ').length;if(cs>1&&cat.lim%cs){var fl=Math.max(cs,Math.floor(cat.lim/cs)*cs);gr.innerHTML=units.slice(0,fl).map(gcard).join('')}}
   $('more').style.display=units.length>cat.lim?'inline-flex':'none';
+  serInfoDraw();
   syncCart();
 }
 function quickView(i){
