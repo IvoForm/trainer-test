@@ -663,6 +663,30 @@ input,select,textarea{font-size:16px!important}
 .pr #shp button.sn{min-width:54px}.pr #shp .snl{align-self:center;font-size:12px;color:#8a8a8a;margin:0 2px 0 6px}
 .pr #shp button:disabled{opacity:.55}
 #shpHint{min-height:18px}
+/* Teenused redesign */
+#v-teenused .stl{max-width:none;grid-template-columns:repeat(6,1fr);gap:18px}#v-teenused .tstep{grid-column:span 2}#v-teenused .tstep:nth-child(4),#v-teenused .tstep:nth-child(6){grid-column:span 3}#v-teenused .tstep:nth-child(5){order:3}
+#v-teenused .stl::before{display:none}
+#v-teenused .tstep{display:flex!important;flex-direction:column;gap:10px;padding:28px 26px!important;border:1px solid #DDD8CB;border-top:5px solid var(--amber);min-height:210px}
+#v-teenused .tstep:hover{transform:translateY(-4px)}
+#v-teenused .tstep .sn{display:block;font-size:56px!important;line-height:.9;margin:0 0 4px!important;width:auto!important;background:none;color:var(--amber-d);opacity:.9}
+#v-teenused .tstep h3{font-size:30px}
+#v-teenused .tstep p{font-size:16px;line-height:1.5}
+#v-teenused .tstep:nth-child(5){grid-column:span 6;background:#111;border-color:#111;border-top-color:var(--amber)}
+#v-teenused .tstep:nth-child(5) h3,#v-teenused .tstep:nth-child(5) p{color:#fff}
+#v-teenused .tstep:nth-child(5) .sn{color:var(--amber)}
+#v-teenused .gar{grid-template-columns:repeat(3,1fr);gap:14px}
+#v-teenused .gar div{background:#1d1d1d;border:1px solid #333;padding:18px;font-size:15px}
+#v-teenused .gar b{font-size:64px}
+#v-teenused .faqg{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;align-items:start}
+#v-teenused .faqg details{background:#fff;border:1px solid #DDD8CB;border-left:4px solid var(--amber);padding:6px 20px}
+#v-teenused .faqg summary{font:700 22px 'Barlow Condensed';text-transform:uppercase;cursor:pointer;padding:12px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+#v-teenused .faqg summary::after{content:"+";color:var(--amber-d);font-size:26px;line-height:1}
+#v-teenused .faqg details[open] summary::after{content:"–"}
+#v-teenused .faqg details p{padding-bottom:14px;margin:0}
+#v-teenused .trg .tc{padding:30px}
+#v-teenused .trg .tc h3{font-size:28px}
+@media(max-width:1000px){#v-teenused .stl{grid-template-columns:1fr 1fr}#v-teenused .tstep,#v-teenused .tstep:nth-child(4),#v-teenused .tstep:nth-child(6){grid-column:span 1}#v-teenused .tstep:nth-child(5){grid-column:span 2}}
+@media(max-width:700px){#v-teenused .stl,#v-teenused .faqg{grid-template-columns:1fr}#v-teenused .tstep:nth-child(5){grid-column:auto}#v-teenused .gar{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -951,8 +975,8 @@ Kuupäev: __________</pre>
       <div class="tstep rv"><div class="sn">02</div><div><h3>Projekteerimine</h3><p>Koostame plaani ja pakkumise sinu ala mõõtude järgi. Planeerijas valitud plaani saad saata otse meile ning vaatame selle üle.</p></div></div>
       <div class="tstep rv"><div class="sn">03</div><div><h3>Tarne</h3><p>Tarneaeg lepitakse kokku iga tellimuse puhul eraldi. Seadmed tuuakse sinu antud aadressile või saab need kokkuleppel ise laost järele tulla. Tarnekulu on näha pakkumises.</p></div></div>
       <div class="tstep rv"><div class="sn">04</div><div><h3>Paigaldus</h3><p>Iga seadmega tuleb vundamenti valatav ankur ja paigaldusjuhend. Paigalduse saab teha ise juhendi järgi või kasutada spetsialiste.</p></div></div>
-      <div class="tstep rv"><div class="sn">05</div><div><h3>Garantii</h3><p>Garantii kehtib kõigile toodetele ja on kolmeosaline:</p><div class="gar"><div><b>20</b>aastat konstruktsioonile</div><div><b>5</b>aastat värvile</div><div><b>2</b>aastat liikuvatele osadele</div></div></div></div>
-      <div class="tstep rv"><div class="sn">06</div><div><h3>Hooldus</h3><p>Välitreeningseadmeid tasub kontrollida regulaarselt: kinnitused, liikuvad osad, pinnakate ja ala puhtus. Hoolduskava ja varuosad lepime kokku pakkumisel. <span class="ph2">[Hooldustingimused kinnitatakse]</span></p></div></div>
+      <div class="tstep rv"><div class="sn">06</div><div><h3>Garantii</h3><p>Garantii kehtib kõigile toodetele ja on kolmeosaline:</p><div class="gar"><div><b>20</b>aastat konstruktsioonile</div><div><b>5</b>aastat värvile</div><div><b>2</b>aastat liikuvatele osadele</div></div></div></div>
+      <div class="tstep rv"><div class="sn">05</div><div><h3>Hooldus</h3><p>Välitreeningseadmeid tasub kontrollida regulaarselt: kinnitused, liikuvad osad, pinnakate ja ala puhtus. Hoolduskava ja varuosad lepime kokku pakkumisel. <span class="ph2">[Hooldustingimused kinnitatakse]</span></p></div></div>
     </div>
     <p class="draftnote" style="margin-top:26px">Prototüübi märkus: teenuste sisu on TRAINERi lehelt (<a href="https://outdoor-gym.com/services/delivery/" target="_blank" rel="noopener">tarne</a>, <a href="https://outdoor-gym.com/services/installation/" target="_blank" rel="noopener">paigaldus</a>, <a href="https://outdoor-gym.com/services/warranty/" target="_blank" rel="noopener">garantii</a>). Eesti tarne, paigalduse ja garantii tingimused tuleb TRAINERiga kinnitada.</p>
   </div></section>
@@ -962,7 +986,7 @@ Kuupäev: __________</pre>
     <p class="mut" style="margin-top:18px;font-size:14px">Sertifikaadid ja testiaruanded lisame siia, kui TRAINER need annab.</p>
   </div></section>
   <section class="light" style="padding:20px 0 60px"><div class="wrap">
-    <div class="kick">KKK</div><h2 style="margin-bottom:22px">Korduma kippuvad küsimused</h2>
+    <div class="kick">KKK</div><h2 style="margin-bottom:22px">Korduma kippuvad küsimused</h2><div class="faqg">
     <details><summary>Kui palju välijõusaal maksab?</summary><p class="mut">Tootel on näha neto näidishind (ilma käibemaksu ja tarneta). Planeerijas näed oma kava mudelhinda kokku. Lõpliku pakkumise teeme pärast projekteerimist.</p></details>
     <details><summary>Mis on ohutustsoon ja miks see on plaanil?</summary><p class="mut">See on seadme ümber olev vaba ala, kus ei tohi olla teist seadet ega takistust. Planeerijas näed seda iga seadme ümber ja punane hoiatus tähendab, et tsoon on kattuv või ala piirist väljas.</p></details>
     <details><summary>Kas seadmed on sertifitseeritud?</summary><p class="mut">Jah, TRAINER seadmed on sertifitseeritud standardi EN 16630:2015-06 järgi ja neid on testinud TÜV Rheinland. Sertifikaadid lisame lehele, kui tootja need annab.</p></details>
@@ -970,7 +994,7 @@ Kuupäev: __________</pre>
     <details><summary>Kes seadmed paigaldab?</summary><p class="mut">Paigalduse saab teha ise koos tootega tuleva ankru ja juhendiga või kasutada spetsialiste. Ala peab olema eelnevalt ette valmistatud, näiteks betoonalus ja load.</p></details>
     <details><summary>Kui pikk on garantii?</summary><p class="mut">20 aastat konstruktsioonile, 5 aastat värvile ja 2 aastat liikuvatele osadele.</p></details>
     <details><summary>Kas saan joonised oma projekti jaoks?</summary><p class="mut">Jah, vaata <a href="#allalaadimised">allalaadimisi</a>. Kui vajalikku faili pole, küsi seda meilt.</p></details>
-  </div></section>
+  </div></div></section>
   <section style="background:var(--amber);color:#111;text-align:center"><div class="wrap"><h2 style="margin-bottom:18px">Räägime sinu alast</h2><a class="btn d" href="#kontakt">Küsi pakkumist</a></div></section>
 </div>
 
