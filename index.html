@@ -1357,7 +1357,7 @@ function sortUnits(u){
   if(s==='pa')u.sort(function(a,b){return a.items[0].p-b.items[0].p});
   else if(s==='pd')u.sort(function(a,b){return b.items[0].p-a.items[0].p});
   else if(s==='n')u.sort(function(a,b){return a.items[0].n.localeCompare(b.items[0].n)});
-  else{var f=[],r=[];u.forEach(function(x){(x.items[0].s==='LINNAMOOBEL'?f:r).push(x)});return f.concat(r)}
+  else{var f=[],r=[];u.forEach(function(x){(x.items[0].s==='LINNAMOOBEL'?f:r).push(x)});if(u.length&&u.every(function(x){return x.items[0].s===u[0].items[0].s})){var py=r.filter(function(x){return /pylon/i.test(x.items[0].n)}).sort(function(a,b){return a.items[0].p-b.items[0].p}),ot=r.filter(function(x){return !/pylon/i.test(x.items[0].n)});r=py.concat(ot)}return f.concat(r)}
   return u;
 }
 function gcard(g,i){
@@ -1473,7 +1473,7 @@ function serInfoDraw(){
   var cm=$('serCmpBody');if(cm&&!cm.dataset.d){cm.dataset.d=1;cm.innerHTML='<div class="sct"><div class="sch"><b>Seeria</b><b>Kirjeldus</b><b>Pinnatöötlus</b><b>Värv</b><b>Hind (neto)</b></div>'+SER.filter(function(x){return x[0]!=='LINNAMOOBEL'}).map(function(x){var f=SINFO[x[0]]||['','',''],r=sRange(x[0]);return '<button type="button" class="scr" data-spill="'+x[0]+'"><b>'+esc(x[1])+'</b><span>'+esc(f[0])+'</span><span>'+esc(f[1])+'</span><span class="scd">'+sDots(f[2])+esc(f[2])+'</span><span class="scp">'+(r?'alates '+eur(r[0])+'<small> kuni '+eur(r[1])+'</small>':'')+'</span></button>'}).join('')+'</div><p class="mut" style="font-size:13px;margin:10px 0 0">Hinnad on tootegruppide näidishinnad (neto, ilma käibemaksu ja tarneta). Hinnavahe tuleb seadme tüübist, suurusest ja seeria pinnatöötlusest. Täpne pakkumine tehakse projekteerimisel.</p>'}
   var sl=$('serSel');if(!sl)return;
   if(cat.ser.length===1&&SERPG[cat.ser[0]]){var k=cat.ser[0],P=SERPG[k],f=SINFO[k]||['','',''],r=sRange(k),ix=SER.map(function(x){return x[0]}).indexOf(k);
-    sl.innerHTML='<div class="ssel"><div><h3>'+esc(SERN[k]||k)+'</h3><p>'+esc(P.l[0])+'</p></div><div class="sfacts"><div><small>Pinnatöötlus</small><b>'+esc(f[1])+'</b></div><div><small>Standardvärv</small><b class="scd">'+sDots(f[2])+esc((P.cs||'').replace(/^Standardvärv(id)?: /,'').split('.')[0])+'</b></div>'+(r?'<div><small>Hind (neto)</small><b>'+eur(r[0])+' – '+eur(r[1])+'</b></div>':'')+'<a class="btn sm d" href="#seeria-'+ix+'">Seeria täielik info →</a></div></div>'}
+    sl.innerHTML='<div class="ssel"><div><h3>'+esc(SERN[k]||k)+'</h3><p>'+esc(P.l[0])+'</p>'+((k==='FIT'||k==='STEEL4FIT D')?'<p style="margin-top:10px;font-weight:600">Alusta pylon-postist (esimesed kaardid) ja lisa sellele sobivad seadmed.</p>':'')+'</div><div class="sfacts"><div><small>Pinnatöötlus</small><b>'+esc(f[1])+'</b></div><div><small>Standardvärv</small><b class="scd">'+sDots(f[2])+esc((P.cs||'').replace(/^Standardvärv(id)?: /,'').split('.')[0])+'</b></div>'+(r?'<div><small>Hind (neto)</small><b>'+eur(r[0])+' – '+eur(r[1])+'</b></div>':'')+'<a class="btn sm d" href="#seeria-'+ix+'">Seeria täielik info →</a></div></div>'}
   else sl.innerHTML=''}
 function catDraw(keepR){
   var cu=facet('use',function(d){return useTags(d)}),cs=facet('ser',function(d){return[d.s]}),ca=facet('area',function(d){return['s','m','l','xl'].filter(function(k){return inArea(d,k)})});
