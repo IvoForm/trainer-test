@@ -748,6 +748,9 @@ input,select,textarea{font-size:16px!important}
 #lbx{position:fixed;inset:0;z-index:200;background:rgba(10,10,10,.92);display:none;align-items:center;justify-content:center;padding:4vh 4vw;cursor:zoom-out}
 #lbx.on{display:flex}#lbx img{max-width:92vw;max-height:92vh;object-fit:contain;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 #lbx button{position:absolute;top:14px;right:18px;width:48px;height:48px;border:0;background:var(--amber);color:#111;font-size:32px;line-height:1;cursor:pointer}
+
+#lbx .lbn{display:none;top:50%;margin-top:-30px;width:56px;height:60px;font-size:44px;background:rgba(240,170,20,.95)}#lbx.multi .lbn{display:block}#lbx #lbxp{left:18px;right:auto}#lbx #lbxn{right:18px}
+#lbx #lbxi{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:#fff;font:700 16px 'Barlow Condensed',sans-serif;letter-spacing:.08em;background:rgba(0,0,0,.6);padding:4px 12px;display:none}#lbx.multi #lbxi{display:block}
 </style>
 </head>
 <body>
@@ -2255,11 +2258,18 @@ function loop(){x+=(tx-x)*.12;y+=(ty-y)*.12;g.style.setProperty('--gx',x+'px');g
 h.addEventListener('pointermove',function(e){var r=h.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;if(!on){x=tx;y=ty;on=1}if(!raf)raf=requestAnimationFrame(loop)});
 h.addEventListener('pointerleave',function(){on=0})})})();
 
-(function(){var lb=document.createElement('div');lb.id='lbx';lb.innerHTML='<button type="button" id="lbxc" aria-label="Sulge">×</button><img alt="">';document.body.appendChild(lb);
+(function(){var lb=document.createElement('div');lb.id='lbx';lb.innerHTML='<button type="button" id="lbxc" aria-label="Sulge">×</button><button type="button" class="lbn" id="lbxp" aria-label="Eelmine">‹</button><img alt=""><button type="button" class="lbn" id="lbxn" aria-label="Järgmine">›</button><span id="lbxi"></span>';document.body.appendChild(lb);
+var L=[],ix=0,img=lb.querySelector('img');
+function show(){img.setAttribute('src',L[ix]);lb.classList.toggle('multi',L.length>1);lb.querySelector('#lbxi').textContent=L.length>1?(ix+1)+' / '+L.length:''}
 function close(){lb.classList.remove('on');document.body.style.overflow=''}
-document.addEventListener('click',function(e){var im=e.target.closest('#prod .big img');if(im){lb.querySelector('img').src=im.src;lb.querySelector('img').alt=im.alt||'';lb.classList.add('on');document.body.style.overflow='hidden';return}
-if(e.target.closest('#lbx')){close()}});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on'))close()});
+function go(d){if(L.length<2)return;ix=(ix+d+L.length)%L.length;show()}
+function same(r,c){if(r===c)return true;var F=window.__F;return !!(F&&F[decodeURI(r)]===c)}
+document.addEventListener('click',function(e){var im=e.target.closest('#prod .big img');if(im){L=[].map.call(document.querySelectorAll('#prod .gth'),function(b){return 'img/'+encodeURI(b.getAttribute('data-gal'))});var cur=im.getAttribute('src');ix=-1;L.forEach(function(r,n){if(ix<0&&same(r,cur))ix=n});if(ix<0){L.unshift(cur);ix=0}img.alt=im.alt||'';show();lb.classList.add('on');document.body.style.overflow='hidden';return}
+if(e.target.closest('#lbxp')){go(-1);e.stopPropagation();return}
+if(e.target.closest('#lbxn')){go(1);e.stopPropagation();return}
+if(e.target.closest('#lbx')&&e.target.tagName!=='IMG'||e.target.closest('#lbxc')){close()}});
+document.addEventListener('keydown',function(e){if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();else if(e.key==='ArrowLeft')go(-1);else if(e.key==='ArrowRight')go(1)});
+addEventListener('hashchange',close);var tx=null;lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){if(tx===null)return;var d=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(d)>50)go(d<0?1:-1)},{passive:true});
 document.addEventListener('mouseover',function(e){var b=e.target.closest&&e.target.closest('#prod .big');if(b&&!b.querySelector('.zh')&&b.querySelector('img')){var z=document.createElement('span');z.className='zh';z.textContent='⤢ Suurenda';b.appendChild(z)}});
 })();
 </script>
