@@ -456,12 +456,12 @@ footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
 .zc span{grid-row:1/3;background:var(--amber);width:28px;height:28px;display:grid;place-items:center;font-weight:800}.zc small{color:#666;font-size:13px}
 .why{margin-top:16px;border:1px solid #DDD8CB;background:#fff;padding:12px 14px;color:#141414}.why summary{cursor:pointer;font-weight:700}.why .srcs{font-size:12.5px;color:#666;margin-top:8px}.why a{color:#7a5400}
 
-.phero{position:relative;overflow:hidden;background:#0B0B0B;padding:62px 0 54px;color:#fff}
+.phero{position:relative;overflow:hidden;background:#0B0B0B;padding:34px 0 38px;color:#fff}
 .phero::before{content:"";position:absolute;right:-6%;top:0;bottom:0;width:30%;background:var(--amber);clip-path:polygon(40% 0,100% 0,60% 100%,0 100%);opacity:.95;animation:slide 1.2s cubic-bezier(.2,.7,.2,1) both}
 .phero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--amber),transparent);transform-origin:left;animation:line 1.6s .3s ease both}
 .phero .wrap{position:relative;z-index:2}
 .phero .kick{animation:rise .6s both}
-.phero h1{font-size:clamp(40px,5.2vw,76px);max-width:900px}
+.phero h1{font-size:clamp(34px,3.9vw,60px);max-width:1300px;line-height:1.02}.phero .lead{max-width:760px}
 .phero h1 .w{margin-right:.22em}
 .phero h1 .w:last-child{color:var(--amber)}
 .phero .lead{max-width:640px;color:#cfcfcf;font-size:19px;margin:16px 0 0;animation:rise .8s .5s both}
@@ -663,30 +663,69 @@ input,select,textarea{font-size:16px!important}
 .pr #shp button.sn{min-width:54px}.pr #shp .snl{align-self:center;font-size:12px;color:#8a8a8a;margin:0 2px 0 6px}
 .pr #shp button:disabled{opacity:.55}
 #shpHint{min-height:18px}
-/* Teenused redesign */
-#v-teenused .stl{max-width:none;grid-template-columns:repeat(6,1fr);gap:18px}#v-teenused .tstep{grid-column:span 2}#v-teenused .tstep:nth-child(4),#v-teenused .tstep:nth-child(6){grid-column:span 3}#v-teenused .tstep:nth-child(5){order:3}
-#v-teenused .stl::before{display:none}
-#v-teenused .tstep{display:flex!important;flex-direction:column;gap:10px;padding:28px 26px!important;border:1px solid #DDD8CB;border-top:5px solid var(--amber);min-height:210px}
-#v-teenused .tstep:hover{transform:translateY(-4px)}
-#v-teenused .tstep .sn{display:block;font-size:56px!important;line-height:.9;margin:0 0 4px!important;width:auto!important;background:none;color:var(--amber-d);opacity:.9}
-#v-teenused .tstep h3{font-size:30px}
-#v-teenused .tstep p{font-size:16px;line-height:1.5}
-#v-teenused .tstep:nth-child(5){grid-column:span 6;background:#111;border-color:#111;border-top-color:var(--amber)}
-#v-teenused .tstep:nth-child(5) h3,#v-teenused .tstep:nth-child(5) p{color:#fff}
-#v-teenused .tstep:nth-child(5) .sn{color:var(--amber)}
-#v-teenused .gar{grid-template-columns:repeat(3,1fr);gap:14px}
-#v-teenused .gar div{background:#1d1d1d;border:1px solid #333;padding:18px;font-size:15px}
-#v-teenused .gar b{font-size:64px}
-#v-teenused .faqg{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;align-items:start}
-#v-teenused .faqg details{background:#fff;border:1px solid #DDD8CB;border-left:4px solid var(--amber);padding:6px 20px}
-#v-teenused .faqg summary{font:700 22px 'Barlow Condensed';text-transform:uppercase;cursor:pointer;padding:12px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
-#v-teenused .faqg summary::after{content:"+";color:var(--amber-d);font-size:26px;line-height:1}
-#v-teenused .faqg details[open] summary::after{content:"–"}
-#v-teenused .faqg details p{padding-bottom:14px;margin:0}
-#v-teenused .trg .tc{padding:30px}
-#v-teenused .trg .tc h3{font-size:28px}
-@media(max-width:1000px){#v-teenused .stl{grid-template-columns:1fr 1fr}#v-teenused .tstep,#v-teenused .tstep:nth-child(4),#v-teenused .tstep:nth-child(6){grid-column:span 1}#v-teenused .tstep:nth-child(5){grid-column:span 2}}
-@media(max-width:700px){#v-teenused .stl,#v-teenused .faqg{grid-template-columns:1fr}#v-teenused .tstep:nth-child(5){grid-column:auto}#v-teenused .gar{grid-template-columns:1fr}}
+
+/* Teenused v2 */
+#v-teenused .tbar{background:#111;border-bottom:4px solid var(--amber)}
+#v-teenused .tbar .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+#v-teenused .tbar div.i{padding:26px 24px;border-left:1px solid #2c2c2c;color:#cfcfcf;font-size:15px}
+#v-teenused .tbar div.i:first-child{border-left:0;padding-left:0}
+#v-teenused .tbar b{display:block;font:800 44px 'Barlow Condensed';color:var(--amber);line-height:1;margin-bottom:4px}
+#v-teenused .proc{padding:80px 0 70px!important}
+#v-teenused .proc h2{margin-bottom:10px}
+#v-teenused .proc .sub{max-width:640px;color:#555;font-size:18px;margin-bottom:46px}
+#v-teenused .tl{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+#v-teenused .tl::before{content:"";position:absolute;left:0;right:0;top:27px;height:3px;background:linear-gradient(90deg,var(--amber),#d9d2bf)}
+#v-teenused .st{position:relative;padding:0 26px 0 0}
+#v-teenused .st .n{width:56px;height:56px;border-radius:50%;background:#111;color:var(--amber);display:grid;place-items:center;font:800 26px 'Barlow Condensed';border:4px solid var(--paper);box-shadow:0 0 0 3px var(--amber);position:relative;margin-bottom:22px}
+#v-teenused .st h3{font-size:26px;margin-bottom:8px}
+#v-teenused .st p{color:#4a4a4a;font-size:15.5px;line-height:1.55;margin:0}
+#v-teenused .st a{color:#7a5400}
+#v-teenused .gband{display:grid;grid-template-columns:1.1fr 1fr;background:#111;color:#fff}
+#v-teenused .gl{padding:70px clamp(20px,3.2vw,72px);display:flex;flex-direction:column;justify-content:center}
+#v-teenused .gl h2{margin-bottom:12px}
+#v-teenused .gl p{color:#c9c9c9;font-size:18px;max-width:560px;margin-bottom:30px}
+#v-teenused .gn{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #333}
+#v-teenused .gn div{padding:24px 20px 0 0;color:#cfcfcf;font-size:15px}
+#v-teenused .gn b{display:block;font:800 clamp(56px,6vw,96px) 'Barlow Condensed';color:var(--amber);line-height:.95}
+#v-teenused .gr{background:var(--amber);position:relative;overflow:hidden;min-height:420px;display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:50px 40px;align-content:center}
+#v-teenused .gr::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 55%)}
+#v-teenused .gr div{background:#fff;aspect-ratio:1;display:grid;place-items:center;box-shadow:0 18px 36px rgba(0,0,0,.25);position:relative}
+#v-teenused .gr div:nth-child(2){transform:translateY(40px)}
+#v-teenused .gr div:nth-child(3){display:none}
+#v-teenused .gr img{width:100%;height:100%;object-fit:contain}
+#v-teenused .safe{padding:80px 0!important}
+#v-teenused .safe .trg{grid-template-columns:repeat(3,1fr);gap:0;border:1px solid #2c2c2c}
+#v-teenused .safe .tc{background:transparent;border:0;border-left:1px solid #2c2c2c;padding:34px 30px;color:#fff}
+#v-teenused .safe .tc:first-child{border-left:0}
+#v-teenused .safe .tc p{color:#bdbdbd;font-size:16px}
+#v-teenused .safe .tc h3{font-size:28px;color:#fff}
+#v-teenused .faqs{padding:80px 0!important}
+#v-teenused .faqw{display:grid;grid-template-columns:minmax(260px,.8fr) 2fr;gap:clamp(30px,5vw,90px);align-items:start}
+#v-teenused .faqw .side{position:sticky;top:100px}
+#v-teenused .faqw .side p{color:#555;font-size:17px;margin:12px 0 22px}
+#v-teenused .faqs details{border-top:1px solid #d9d2bf;padding:4px 0}
+#v-teenused .faqs details:last-child{border-bottom:1px solid #d9d2bf}
+#v-teenused .faqs summary{font:700 24px 'Barlow Condensed';text-transform:uppercase;cursor:pointer;padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+#v-teenused .faqs summary::-webkit-details-marker{display:none}
+#v-teenused .faqs summary::after{content:"+";color:var(--amber-d);font-size:30px;line-height:1}
+#v-teenused .faqs details[open] summary::after{content:"–"}
+#v-teenused .faqs details p{padding:0 40px 20px 0;margin:0;font-size:17px;line-height:1.55}
+#v-teenused .tnote{font-size:13px;color:#777;margin-top:30px}
+@media(max-width:1100px){#v-teenused .tl{grid-template-columns:repeat(2,1fr);gap:34px 0}#v-teenused .tl::before{display:none}#v-teenused .gband{grid-template-columns:1fr}#v-teenused .faqw{grid-template-columns:1fr}#v-teenused .faqw .side{position:static}}
+@media(max-width:700px){#v-teenused .tbar .wrap{grid-template-columns:1fr 1fr}#v-teenused .tbar div.i:nth-child(3){border-left:0;padding-left:0}#v-teenused .tl{grid-template-columns:1fr}#v-teenused .safe .trg{grid-template-columns:1fr}#v-teenused .safe .tc{border-left:0;border-top:1px solid #2c2c2c}#v-teenused .gn{grid-template-columns:1fr}}
+
+.meist3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.meist3 .mc{background:var(--paper);border:1px solid #DDD8CB;border-top:5px solid var(--amber);padding:30px 28px}
+.meist3 .mc .no{font:800 52px 'Barlow Condensed';color:var(--amber-d);line-height:1;display:block;margin-bottom:6px}
+.meist3 .mc h3{font-size:28px;margin-bottom:14px}
+.meist3 .mc p{font-size:16px;line-height:1.6;margin:0 0 12px;color:#333}
+@media(max-width:1000px){.meist3{grid-template-columns:1fr}}
+.g3 .tile{min-height:0!important}
+.cbtns{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:700px){#v-avaleht .g3,#v-allalaadimised .g3,#cliTiles,#whyTiles{grid-template-columns:1fr 1fr!important;gap:10px!important}.g3 .tile{padding:14px!important}.g3 .tile h3{font-size:18px!important}.g3 .tile .no{font-size:28px!important}.g3 .tile p{font-size:13px}}
+@media(min-width:901px){.fabk{display:none!important}#prod .pp>div:first-child{position:sticky;top:100px;align-self:start}}
+#prod .fl a,#prod .dl a{margin:0 8px 8px 0}
+#klpg .pg{grid-template-columns:repeat(4,1fr)}@media(max-width:900px){#klpg .pg{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -729,17 +768,7 @@ input,select,textarea{font-size:16px!important}
     <div class="pg" id="homeFurn"></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px"><a class="btn" href="#planeerija" data-pser="LINNAMOOBEL">Ehita ise linnapark</a><a class="btn d" href="#tooted" data-use="mooblid">Vaata kogu linnamööblit</a></div>
   </div></section>
-  <section class="light" id="trust"><div class="wrap">
-    <div class="kick">Miks TRAINER</div><h2 style="margin-bottom:30px">Sertifitseeritud, testitud ja garantiiga</h2>
-    <div class="trg">
-      <div class="tc"><i>EN</i><h3>EN 16630:2015-06</h3><p>Seadmed on sertifitseeritud püsivalt paigaldatavate välijõusaaliseadmete Euroopa standardi järgi.</p></div>
-      <div class="tc"><i>TÜV</i><h3>TÜV Rheinlandi testitud</h3><p>TÜV Rheinland on seadmeid testinud ja need vastavad Euroopa ohutusnõuetele.</p></div>
-      <div class="tc"><i>20</i><h3>20 aastat garantiid</h3><p>20 aastat konstruktsioonile, 5 aastat värvile ja 2 aastat liikuvatele osadele.</p></div>
-      <div class="tc"><i>EU</i><h3>Toodetud Euroopas</h3><p>Üle 15 aasta kogemust välijõusaalide tootmisega, välijõusaale ja Street Workout seadmeid on toodetud üle 10 aasta.</p></div>
-    </div>
-    <p class="draftnote" style="margin-top:22px">Prototüübi märkus: andmed on TRAINERi kodulehelt (<a href="https://outdoor-gym.com/services/production-of-outdoor-gyms/" target="_blank" rel="noopener">tootmine ja sertifikaadid</a>, <a href="https://outdoor-gym.com/services/warranty/" target="_blank" rel="noopener">garantii</a>). Enne avaldamist lisa TÜV-i raport ja garantii PDF TRAINERi käest.</p>
-    <a class="btn d" href="#teenused">Teenused ja garantii</a>
-  </div></section>
+  
   <section class="light" id="homeCli"><div class="wrap">
     <div class="kick">Lahendused</div><h2 style="margin-bottom:10px">Läbimõeldud lahendused aktiivse liikumise toetamiseks igas keskkonnas</h2>
     <p class="mut" style="max-width:640px;margin-bottom:26px">Vali, kellele ala tuleb, ja vaata sobivaid seadmeid.</p>
@@ -969,24 +998,30 @@ Kuupäev: __________</pre>
 <!-- KONTAKT -->
 <div class="view" id="v-teenused">
   <div class="phero"><div class="wrap"><div class="kick">Teenused</div><h1 data-split>Nõustamisest paigalduseni</h1><p class="lead">Aitame ala valida, kavandada ja tellida. Planeerija on selle esimene samm.</p></div></div>
-  <section class="light" style="padding:60px 0"><div class="wrap">
-    <div class="stl">
-      <div class="tstep rv"><div class="sn">01</div><div><h3>Nõustamine</h3><p>Aitame valida seadmed, ala suuruse ja koosseisu vastavalt sellele, kes ala kasutab. Hea algus on <a href="#planeerija">planeerija</a>.</p></div></div>
-      <div class="tstep rv"><div class="sn">02</div><div><h3>Projekteerimine</h3><p>Koostame plaani ja pakkumise sinu ala mõõtude järgi. Planeerijas valitud plaani saad saata otse meile ning vaatame selle üle.</p></div></div>
-      <div class="tstep rv"><div class="sn">03</div><div><h3>Tarne</h3><p>Tarneaeg lepitakse kokku iga tellimuse puhul eraldi. Seadmed tuuakse sinu antud aadressile või saab need kokkuleppel ise laost järele tulla. Tarnekulu on näha pakkumises.</p></div></div>
-      <div class="tstep rv"><div class="sn">04</div><div><h3>Paigaldus</h3><p>Iga seadmega tuleb vundamenti valatav ankur ja paigaldusjuhend. Paigalduse saab teha ise juhendi järgi või kasutada spetsialiste.</p></div></div>
-      <div class="tstep rv"><div class="sn">06</div><div><h3>Garantii</h3><p>Garantii kehtib kõigile toodetele ja on kolmeosaline:</p><div class="gar"><div><b>20</b>aastat konstruktsioonile</div><div><b>5</b>aastat värvile</div><div><b>2</b>aastat liikuvatele osadele</div></div></div></div>
-      <div class="tstep rv"><div class="sn">05</div><div><h3>Hooldus</h3><p>Välitreeningseadmeid tasub kontrollida regulaarselt: kinnitused, liikuvad osad, pinnakate ja ala puhtus. Hoolduskava ja varuosad lepime kokku pakkumisel. <span class="ph2">[Hooldustingimused kinnitatakse]</span></p></div></div>
+  <div class="tbar"><div class="wrap"><div class="i"><b>20 a</b>garantii konstruktsioonile</div><div class="i"><b>EN 16630</b>sertifitseeritud standard</div><div class="i"><b>TÜV</b>Rheinland testitud</div><div class="i"><b>4000+</b>projekti 40 riigis</div></div></div>
+  <section class="light proc"><div class="wrap">
+    <div class="kick">Kuidas see käib</div><h2>Viis sammu ideest valmis alani</h2>
+    <p class="sub">Alustad planeerijast või kirjutad meile. Ülejäänu teeme koos sinuga.</p>
+    <div class="tl">
+      <div class="st rv"><div class="n">1</div><h3>Nõustamine</h3><p>Aitame valida seadmed, ala suuruse ja koosseisu vastavalt sellele, kes ala kasutab. Hea algus on <a href="#planeerija">planeerija</a>.</p></div>
+      <div class="st rv"><div class="n">2</div><h3>Projekteerimine</h3><p>Koostame plaani ja pakkumise sinu ala mõõtude järgi. Planeerijas valitud plaani saad saata otse meile ning vaatame selle üle.</p></div>
+      <div class="st rv"><div class="n">3</div><h3>Tarne</h3><p>Tarneaeg lepitakse kokku iga tellimuse puhul eraldi. Seadmed tuuakse sinu antud aadressile või saab need kokkuleppel ise laost järele tulla. Tarnekulu on näha pakkumises.</p></div>
+      <div class="st rv"><div class="n">4</div><h3>Paigaldus</h3><p>Iga seadmega tuleb vundamenti valatav ankur ja paigaldusjuhend. Paigalduse saab teha ise juhendi järgi või kasutada spetsialiste.</p></div>
+      <div class="st rv"><div class="n">5</div><h3>Hooldus</h3><p>Välitreeningseadmeid tasub kontrollida regulaarselt: kinnitused, liikuvad osad, pinnakate ja ala puhtus. Hoolduskava ja varuosad lepime kokku pakkumisel. <span class="ph2">[Hooldustingimused kinnitatakse]</span></p></div>
     </div>
-    <p class="draftnote" style="margin-top:26px">Prototüübi märkus: teenuste sisu on TRAINERi lehelt (<a href="https://outdoor-gym.com/services/delivery/" target="_blank" rel="noopener">tarne</a>, <a href="https://outdoor-gym.com/services/installation/" target="_blank" rel="noopener">paigaldus</a>, <a href="https://outdoor-gym.com/services/warranty/" target="_blank" rel="noopener">garantii</a>). Eesti tarne, paigalduse ja garantii tingimused tuleb TRAINERiga kinnitada.</p>
   </div></section>
-  <section><div class="wrap">
-    <div class="kick">Ohutus</div><h2 style="margin-bottom:26px">Standard ja testimine</h2>
+  <div class="gband">
+    <div class="gl"><div class="kick">Garantii</div><h2>Kolmeosaline garantii kõigile toodetele</h2><p>Seadmed on mõeldud kasutamiseks aastakümneteks igas ilmas. Garantii katab konstruktsiooni, värvi ja liikuvaid osi.</p><div class="gn"><div><b>20</b>aastat konstruktsioonile</div><div><b>5</b>aastat värvile</div><div><b>2</b>aastat liikuvatele osadele</div></div></div>
+    <div class="gr"><div><img src="img/p274.webp" alt="" loading="lazy"></div><div><img src="img/p008.webp" alt="" loading="lazy"></div><div><img src="img/p504.webp" alt="" loading="lazy"></div></div>
+  </div>
+  <section class="safe"><div class="wrap">
+    <div class="kick">Ohutus</div><h2 style="margin-bottom:30px">Standard ja testimine</h2>
     <div class="trg"><div class="tc dk"><i>EN</i><h3>EN 16630:2015-06</h3><p>Kõik seadmed on sertifitseeritud selle standardi järgi.</p></div><div class="tc dk"><i>TÜV</i><h3>TÜV Rheinland</h3><p>Seadmeid on testinud TÜV Rheinland.</p></div><div class="tc dk"><i>EU</i><h3>Euroopa ohutusnõuded</h3><p>Seadmed vastavad Euroopa ohutusstandarditele.</p></div></div>
     <p class="mut" style="margin-top:18px;font-size:14px">Sertifikaadid ja testiaruanded lisame siia, kui TRAINER need annab.</p>
   </div></section>
-  <section class="light" style="padding:20px 0 60px"><div class="wrap">
-    <div class="kick">KKK</div><h2 style="margin-bottom:22px">Korduma kippuvad küsimused</h2><div class="faqg">
+  <section class="light faqs"><div class="wrap faqw">
+    <div class="side"><div class="kick">KKK</div><h2>Korduma kippuvad küsimused</h2><p>Ei leidnud vastust? Kirjuta meile, vastame pakkumisega.</p><a class="btn d" href="#kontakt">Küsi pakkumist</a></div>
+    <div>
     <details><summary>Kui palju välijõusaal maksab?</summary><p class="mut">Tootel on näha neto näidishind (ilma käibemaksu ja tarneta). Planeerijas näed oma kava mudelhinda kokku. Lõpliku pakkumise teeme pärast projekteerimist.</p></details>
     <details><summary>Mis on ohutustsoon ja miks see on plaanil?</summary><p class="mut">See on seadme ümber olev vaba ala, kus ei tohi olla teist seadet ega takistust. Planeerijas näed seda iga seadme ümber ja punane hoiatus tähendab, et tsoon on kattuv või ala piirist väljas.</p></details>
     <details><summary>Kas seadmed on sertifitseeritud?</summary><p class="mut">Jah, TRAINER seadmed on sertifitseeritud standardi EN 16630:2015-06 järgi ja neid on testinud TÜV Rheinland. Sertifikaadid lisame lehele, kui tootja need annab.</p></details>
@@ -994,8 +1029,9 @@ Kuupäev: __________</pre>
     <details><summary>Kes seadmed paigaldab?</summary><p class="mut">Paigalduse saab teha ise koos tootega tuleva ankru ja juhendiga või kasutada spetsialiste. Ala peab olema eelnevalt ette valmistatud, näiteks betoonalus ja load.</p></details>
     <details><summary>Kui pikk on garantii?</summary><p class="mut">20 aastat konstruktsioonile, 5 aastat värvile ja 2 aastat liikuvatele osadele.</p></details>
     <details><summary>Kas saan joonised oma projekti jaoks?</summary><p class="mut">Jah, vaata <a href="#allalaadimised">allalaadimisi</a>. Kui vajalikku faili pole, küsi seda meilt.</p></details>
-  </div></div></section>
-  <section style="background:var(--amber);color:#111;text-align:center"><div class="wrap"><h2 style="margin-bottom:18px">Räägime sinu alast</h2><a class="btn d" href="#kontakt">Küsi pakkumist</a></div></section>
+    <p class="tnote">Prototüübi märkus: teenuste sisu on TRAINERi lehelt. Eesti tarne, paigalduse ja garantii tingimused tuleb TRAINERiga kinnitada.</p>
+    </div>
+  </div></section>
 </div>
 
 <div class="view" id="v-allalaadimised">
@@ -1014,8 +1050,9 @@ Kuupäev: __________</pre>
 
 <div class="view" id="v-kontakt">
   <div class="phero"><div class="wrap"><div class="kick">Meist ja kontakt</div><h1 data-split>Räägime sinu alast</h1><p class="lead">Kirjuta, kuhu saal tuleb ja kes seda kasutab. Vastame pakkumisega. Kui kasutasid planeerijat, lisa pakkumine sõnumisse.</p></div></div>
-  <section class="light" style="padding:50px 0 0"><div class="wrap" id="meistInK"></div></section>
-  <section class="light" style="padding:20px 0 80px"><div class="wrap kgrid">
+  
+  <section class="light" style="padding:40px 0 20px"><div class="wrap"><div class="kick">Kontakt</div><h2 style="margin-bottom:0">Võta meiega ühendust</h2></div></section>
+  <section class="light" style="padding:10px 0 50px"><div class="wrap kgrid">
     <div class="kcol">
       <div class="rv" style="display:flex;gap:18px;align-items:center;margin-bottom:18px"><img src="img/ivo.webp" alt="Ivo, Trainer Outdoor OÜ" onerror="this.style.display='none'" style="width:150px;height:190px;object-fit:cover;object-position:50% 15%;border-radius:12px;flex:none"><div><b style="font-size:22px;display:block">Ivo</b><span class="mut" style="font-size:15px">Trainer Outdoor OÜ</span></div></div>
       <div class="kc rv"><span class="ki">☎</span><div><small>Telefon</small><b><span class="ph2">[Telefon]</span></b></div></div>
@@ -1038,6 +1075,7 @@ Kuupäev: __________</pre>
       <p class="mut" style="font-size:12px;margin-top:8px">Prototüübis päring päriselt ei lähe. Valmis lehel jõuab see otse meile.</p>
     </form>
   </div></section>
+  <section class="light" style="padding:30px 0 70px;background:#fff"><div class="wrap" id="meistInK"></div></section>
 </div>
 </main>
 
@@ -1342,11 +1380,11 @@ function serDraw(i){
   function blk(h,body){return body?'<div class="tile" style="min-height:0"><h3 style="font-size:26px">'+h+'</h3><p style="font-size:15px;line-height:1.55;margin:0">'+body+'</p></div>':''}
   var isF=s[0]!=='LINNAMOOBEL';
   var info=[blk('Konstruktsioon',esc(P.k)),isF?'<div class="tile" style="min-height:0"><h3 style="font-size:26px">Pinnatöötlus ja värvid</h3><p style="font-size:15px;line-height:1.55;margin:0">'+esc(P.c)+'</p><div>'+swd+'</div><p style="font-size:14px;margin:0" class="mut">'+esc(P.cs)+'</p></div>':'',blk('Paigaldus',esc(P.i)),blk('Tarne',esc(isF?T_STD:(P.t2||''))),blk('Sertifikaat ja garantii',esc(GAR))].join('');
-  box.innerHTML='<div class="phero phimg"><span class="pimg">Pildi koht</span><div class="wrap"><button type="button" data-bk class="btn sm o" style="color:#fff;border-color:#fff;margin-bottom:16px">← Tagasi</button><div class="kick"><a href="#tooted" style="color:inherit">Tooted</a> / Seeria</div><h1>'+esc(P.t)+'</h1></div></div>'+
+  box.innerHTML='<div class="phero phimg"><div class="wrap"><button type="button" data-bk class="btn sm o" style="color:#fff;border-color:#fff;margin-bottom:16px">← Tagasi</button><div class="kick"><a href="#tooted" style="color:inherit">Tooted</a> / Seeria</div><h1>'+esc(P.t)+'</h1></div></div>'+
    '<section class="light" style="padding-top:36px"><div class="wrap"><div style="max-width:860px">'+P.l.map(function(x){return '<p style="font-size:18px;line-height:1.6;margin:0 0 14px">'+esc(x)+'</p>'}).join('')+'</div>'+
    '<div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 8px"><a class="btn" href="#planeerija" data-pser="'+esc(s[0])+'">Ehita planeerijas</a><a class="btn d" href="#tooted" data-ser="'+esc(s[0])+'">Filtreeri kataloogis</a></div>'+
    '<h2 style="margin:36px 0 6px">Tooted</h2><p class="mut" style="margin:0 0 6px">'+units.length+' tüüpi · '+list.length+' toodet</p><div class="pg" id="sgrid">'+units.map(gcard).join('')+'</div>'+
-   '<h2 style="margin:56px 0 18px">Kasulik info</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px">'+info+'</div></div></section>';
+   '<h2 style="margin:56px 0 18px">Kasulik info</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px">'+info+'</div></div></section>';
   syncCart();
 }
 /* ---- kliendilehed, meist ---- */
@@ -1367,8 +1405,8 @@ function klDraw(i){
   var c=KLI[i],box=$('klpg');if(!c){box.innerHTML='<div class="wrap" style="padding:60px 0"><a href="#kliendid">Tagasi</a></div>';return}
   var sec=c.ser.map(function(k){var j=serIx(k),list=DATA.filter(function(d){return d.s===k}),u=sortUnits(groupsOf(list)).slice(0,4);
     return '<h3 style="margin:34px 0 4px;font-size:28px"><a href="#seeria-'+j+'" style="color:inherit">'+esc(SERPG[k]?SERPG[k].t:SERN[k])+' →</a></h3><div class="pg">'+u.map(gcard).join('')+'</div>'}).join('');
-  box.innerHTML='<div class="phero phimg"><span class="pimg">Pildi koht</span><div class="wrap"><button type="button" data-bk class="btn sm o" style="color:#fff;border-color:#fff;margin-bottom:16px">← Tagasi</button><div class="kick"><a href="#kliendid" style="color:inherit">Lahendused</a> / '+(i+1)+'</div><h1>'+esc(c.t)+'</h1><p class="lead">'+esc(c.s)+'</p></div></div>'+
-   '<section class="light" style="padding-top:36px"><div class="wrap"><div style="display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:34px;align-items:start" class="klg"><div>'+c.p.map(function(x){return '<p style="font-size:18px;line-height:1.6;margin:0 0 14px">'+esc(x)+'</p>'}).join('')+'<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px"><a class="btn" href="#planeerija">Ava planeerija</a><a class="btn d" href="#kontakt">Küsi pakkumist</a></div></div><div style="display:grid;gap:14px">'+imgSlot('Pildi koht 1',230)+imgSlot('Pildi koht 2',230)+'</div></div>'+
+  box.innerHTML='<div class="phero phimg"><div class="wrap"><button type="button" data-bk class="btn sm o" style="color:#fff;border-color:#fff;margin-bottom:16px">← Tagasi</button><div class="kick"><a href="#kliendid" style="color:inherit">Lahendused</a> / '+(i+1)+'</div><h1>'+esc(c.t)+'</h1><p class="lead">'+esc(c.s)+'</p></div></div>'+
+   '<section class="light" style="padding-top:36px"><div class="wrap"><div style="display:grid;grid-template-columns:minmax(0,1fr);gap:34px;align-items:start;max-width:900px" class="klg"><div>'+c.p.map(function(x){return '<p style="font-size:18px;line-height:1.6;margin:0 0 14px">'+esc(x)+'</p>'}).join('')+'<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px"><a class="btn" href="#planeerija">Ava planeerija</a><a class="btn d" href="#kontakt">Küsi pakkumist</a></div></div></div>'+
    '<h2 style="margin:56px 0 0">Soovitatud tooted</h2>'+sec+'<div style="margin-top:34px"><a class="btn" href="#tooted">Tutvu kõigi toodetega</a></div></div></section>';
   syncCart()}
 function klHome(){
@@ -1378,10 +1416,7 @@ function meistDraw(){
   var S=[['Rahvusvaheline kogemus ja usaldusväärsus',['TRAINER Outdoor Gym on üks Euroopa juhtivaid välijõusaali seadmete tootjaid, kelle lahendusi kasutatakse enam kui 40 riigis üle maailma: Euroopas, Aasias, Ameerikas ja Aafrikas.','TRAINER Outdoor Gym treeningalasid võib leida nii suurte linnade keskustest kui ka väiksematest kogukondadest, parkidest ja puhkealadelt. Seadmeid kasutatakse laialdaselt mänguväljakute juures, hotellides, taastusravikeskustes, elurajoonides ning eramajade aedades, aidates luua aktiivset ja tervislikku eluviisi toetavat keskkonda.']],
    ['Loodud aktiivse eluviisi toetamiseks',['TRAINER Outdoor Gym missioon on luua turvalisi, kvaliteetseid ja kõigile ligipääsetavaid välitreeninglahendusi. Meie eesmärk on innustada inimesi rohkem liikuma, treenima ja veetma aega värskes õhus.','Kõik treeningseadmed valmistatakse Euroopas ning tootevalik hõlmab lahendusi noortele, täiskasvanutele ja seenioridele. Lisaks kuuluvad valikusse spetsiaalsed treeningseadmed erivajadustega inimestele, mida saab kasutada nii aktiivseks liikumiseks kui ka taastusravi toetamiseks.']],
    ['Euroopa kvaliteet ja professionaalne tugi',['Rahvusvahelise ettevõttena peab TRAINER Outdoor Gym väga oluliseks toodete ohutust, vastupidavust ja kvaliteeti. Keskendutakse kaasaegsele disainile ning innovaatilistele lahendustele, mis tagavad seadmete pika kasutusea, ilmastikukindluse ja mugava kasutamise.','Kõik TRAINER Outdoor Gym treeningseadmed vastavad Euroopa Liidu ohutusnõuetele ning on sertifitseeritud vastavalt standardile EN 16630:2015. Lisaks omab tootja TÜV Rheinland sertifikaati ning kvaliteedijuhtimise standardi EN ISO 13485:2016 sertifikaati.','Kogenud konsultandid aitavad leida iga projekti jaoks sobiva lahenduse ning pakuvad tuge kogu protsessi vältel: alates planeerimisest ja seadmete valikust kuni tarne ja professionaalse paigalduseni.']]];
-  $('meistInK').innerHTML='<div class="kick">Meist</div><h2 style="margin-bottom:30px">Loodud pühendumisega ja tõestatud kogemusega</h2>'+
-   S.map(function(x,i){var tx='<div><h2 style="margin-bottom:14px">'+esc(x[0])+'</h2>'+x[1].map(function(p){return '<p style="font-size:18px;line-height:1.6;margin:0 0 14px">'+esc(p)+'</p>'}).join('')+'</div>',im='<div>'+imgSlot('Pildi koht',280)+'</div>';
-     return '<div class="klg" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px;align-items:center;margin:0 0 54px">'+(i%2?im+tx:tx+im)+'</div>'}).join('')+
-   '<h2 style="margin:10px 0 0">Võta meiega ühendust</h2>'}
+  $('meistInK').innerHTML='<div class="kick">Meist</div><h2 style="margin-bottom:30px">Loodud pühendumisega ja tõestatud kogemusega</h2><div class="meist3">'+S.map(function(x,i){return '<div class="mc"><span class="no">'+(i+1)+'</span><h3>'+esc(x[0])+'</h3>'+x[1].map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div>'}).join('')+'</div>'}
 (function(){var n=0;setInterval(function(){var b=document.getElementById('sban');if(!b)return;var a=b.querySelectorAll('.sl'),d=b.querySelectorAll('.dots i');n=(n+1)%a.length;a.forEach(function(x,i){x.classList.toggle('on',i===n)});d.forEach(function(x,i){x.classList.toggle('on',i===n)})},5000)})();
 var PMAX=0;
 function catInit(){
